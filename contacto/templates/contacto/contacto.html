@@ -1,0 +1,61 @@
+{% extends 'neuroMarketingApp/base.html' %} <!-- Heredamos de base el contenido -->
+
+{% load static %}<!--Cargamos contenido dentro de la carpeta static-->
+
+{% block content %}<!--Abrimos el bloque del contenido a mostrar-->
+ 
+
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Contacto</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+              <li class="breadcrumb-item active">Contacto</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      
+      <div class="card">
+        <form action="" method="post">
+          <div class="card-body row">
+            <div class="col-5 text-center d-flex align-items-center justify-content-center">
+                <div class="">
+                <h2>Neural10<strong>Neuromarketing</strong></h2>
+                <p class="lead mb-5">Direccion<br>
+                    Telefono: ## ### #### 
+                </p>
+                </div>
+            </div>
+            {% csrf_token %}<!--Crea un token en un campo invisible que permite enviar el form solo desde nuestra pagina-->
+          <div class="col-7">
+              <div class="form-group">
+                {% if 'valido' in request.GET %}
+                <p style="color: red; ">Informacion enviada correctamente</p>
+                {% endif %}        
+                {% if 'novalido' in request.GET %}
+                <p style="color: red; ">Ocurrio un error, vuelve a intentarlo</p>
+                {% endif %}
+                {{ miFormulario.as_table }}
+                <input type="submit" value="Enviar">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}

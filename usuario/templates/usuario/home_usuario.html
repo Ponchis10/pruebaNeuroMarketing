@@ -1,0 +1,11 @@
+{% extends 'neuroMarketingApp/base.html' %} <!-- Heredamos de base el contenido -->
+
+{% load static %}<!--Cargamos contenido dentro de la carpeta static-->
+
+{% block content %}<!--Abrimos el bloque del contenido a mostrar-->
+
+    <h1 class="m-0">Home usuario</h1>
+    <p>Contenido por definir</p>
+    <a href="{% url 'editar_usuario' %}">editar usuario</a>
+
+{% endblock %}
